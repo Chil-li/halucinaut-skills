@@ -1,0 +1,53 @@
+{
+  "project_meta": {
+    "paper_title": "{{PAPER_TITLE}}",
+    "reproduction_type": "Branch A (Audit) / Branch B (Reconstruction)",
+    "target_paradigm": "e.g., PyTorch Lightning / HuggingFace Trainer / Native PyTorch"
+  },
+  "configuration_audit": {
+    "extracted_hyperparameters": [
+      {
+        "name": "learning_rate",
+        "value": "e.g., 1e-4",
+        "source": "Section 4.1, Paragraph 2",
+        "is_default_assumption": false
+      },
+      {
+        "name": "batch_size",
+        "value": "32",
+        "source": "Standard Industry Practice (Not in Paper)",
+        "is_default_assumption": true
+      }
+    ],
+    "hardcoded_constants_to_refactor": [
+      "List any magic numbers found in formulas that need to move to config"
+    ]
+  },
+  "file_manifest": [
+    {
+      "filename": "config.py",
+      "description": "Centralized configuration. NO logic allowed."
+    },
+    {
+      "filename": "model.py",
+      "classes": ["List primary model class names"],
+      "dependencies": ["torch", "timm (optional)"]
+    },
+    {
+      "filename": "dataset.py",
+      "description": "Data loading & Preprocessing pipeline."
+    },
+    {
+      "filename": "train.py",
+      "has_mock_test_integration": true
+    }
+  ],
+  "risk_assessment": {
+    "missing_components": [
+      "List parts of the paper that represent a black box"
+    ],
+    "uncertain_implementations": [
+      "CRITICAL: List any logic where you had to guess due to paper ambiguity"
+    ]
+  }
+}

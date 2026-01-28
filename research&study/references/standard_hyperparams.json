@@ -1,0 +1,29 @@
+{
+  "optimizer_defaults": {
+    "adamw": {
+      "beta1": 0.9,
+      "beta2": 0.999,
+      "weight_decay": 0.05,
+      "epsilon": 1e-8
+    },
+    "sgd_momentum": {
+      "momentum": 0.9,
+      "weight_decay": 1e-4,
+      "nesterov": true
+    }
+  },
+  "initialization_defaults": {
+    "conv_layers": "kaiming_normal_(mode='fan_out', nonlinearity='relu')",
+    "linear_layers": "xavier_uniform_",
+    "norm_layers": "weight=1, bias=0"
+  },
+  "training_dynamics": {
+    "batch_size_search_start": 32,
+    "warmup_ratio": 0.05,
+    "gradient_clip_val": 1.0
+  },
+  "data_preprocessing": {
+    "imagenet_mean": [0.485, 0.456, 0.406],
+    "imagenet_std": [0.229, 0.224, 0.225]
+  }
+}
